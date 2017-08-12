@@ -1,6 +1,5 @@
-from activations import Tanh
+from activations.tanh import Tanh
 from layers.Layer import Layer
-from activations import Linear
 import numpy as np
 class ConvFilter(Layer):
     def __init__(self,input_size,window_size,stride,activation=Tanh,pooling = False):

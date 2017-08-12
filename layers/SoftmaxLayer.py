@@ -1,5 +1,5 @@
 import numpy as np
-from activations import Softmax
+from activations.softmax import Softmax
 from layers.Layer import Layer
 
 

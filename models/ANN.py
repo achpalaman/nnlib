@@ -1,11 +1,12 @@
 from __future__ import division
 import pickle
-from activations import Sigmoid
+from activations.sigmoid import Sigmoid
 from layers.Layer import Layer
-from activations import Linear
+from activations.relu import ReLU
 from layers.SoftmaxLayer import SoftmaxLayer
 import numpy as np
-from loss_functions import CrossEntropy,MeanSquared
+from loss_functions.crossentropy import CrossEntropy
+from loss_functions.meansquared import MeanSquared
 
 class ANN:
     def __init__(self,list_sizes,input_size, loss_fn=CrossEntropy):
@@ -15,7 +16,7 @@ class ANN:
         for Layer,i,act in list_sizes:
             self.layers.append(Layer(i,[prev_size],activation = act))
             prev_size = i
-        self.loss_fn = loss_fn
+        self.loss_fn = loss_fn()
 
     def forward(self,input_,train= False):
         inp = input_
@@ -45,7 +46,7 @@ def accuracy(samples,targets):
     print count,len(samples)
 train, validate, test = pickle.load(open("./mnist.pkl","rb"))
 print len(train[0]),len(train[1])
-ann = ANN([(Layer,25,Sigmoid),(SoftmaxLayer,10,Linear)],784,loss_fn = MeanSquared)
+ann = ANN([(Layer,25,Sigmoid),(SoftmaxLayer,10,ReLU)],784,loss_fn = MeanSquared)
 max_epochs = 100
 accuracy(train[0],train[1])
 for epoch in range(max_epochs):

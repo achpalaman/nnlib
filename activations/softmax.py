@@ -1,7 +1,7 @@
 from __future__ import division
 import numpy as np
 
-from activations import Activation
+from activation import Activation
 
 class Softmax(Activation):
 

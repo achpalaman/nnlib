@@ -1,8 +1,8 @@
 from layers.Layer import Layer
-from activations import Linear
+from activations.relu import ReLU
 import numpy as np
 class RNNLayer:
-    def __init__(self,hidden_size,input_size,activation=Linear):
+    def __init__(self,hidden_size,input_size,activation=ReLU):
         self.hidden_size = hidden_size
         self.layer = Layer(hidden_size,[hidden_size,input_size],activation=activation)
 

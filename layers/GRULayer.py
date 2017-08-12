@@ -1,8 +1,9 @@
 from layers.Layer import Layer
-from activations import Linear, Sigmoid
+from activations.relu import ReLU
+from activations.sigmoid import Sigmoid
 import numpy as np
 class GRULayer:
-    def __init__(self,hidden_size,input_size,activation=Linear):
+    def __init__(self,hidden_size,input_size,activation=ReLU):
         self.hidden_size = hidden_size
         self.layer = Layer(hidden_size,[hidden_size,input_size],activation=activation)
         self.update = Layer(hidden_size,[hidden_size,input_size],activation=Sigmoid)

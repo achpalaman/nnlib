@@ -5,10 +5,10 @@ from lossfunction import LossFunction
 
 class CrossEntropy(LossFunction):
 
-    def compute(observed, target):
+    def compute(self, observed, target):
         return -(target * np.log(observed)).sum()
 
-    def error(observed,target):
+    def error(self, observed,target):
         return -(target / observed)
 
 
